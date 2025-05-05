@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: HousePricePrediction
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn houseprice.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: HousePricePrediction.settings
+      - key: PYTHON_VERSION
+        value: 3.9.18
+      - key: SECRET_KEY
+        value: something-secret
+      - key: DEBUG
+        value: false
