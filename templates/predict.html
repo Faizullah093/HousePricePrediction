@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auth Form</title>
+    <link href="{% static 'css/style1.css'%}" rel="stylesheet" />
+
+
+<style>
+    body{
+        background-image: url('{% static 'images/background.jpg'%}'); /* kendi görsel yolunu yaz */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+    }
+</style>
+</head>
+<body>
+<div class="auth-box">
+  <h3>Please enter the following values  </h3>
+    <br>
+  <form id="predict-form" action="{% url 'result' %}" method="get">
+    <input type="text" class="input email-input" name="n1" placeholder="av.Area Income" />
+    <input type="text" class="input email-input" name="n2" placeholder="Avg. Area House Age" />
+    <input type="text" class="input email-input" name="n3" placeholder="Avg. Area Number of Rooms" />
+    <input type="text" class="input email-input" name="n4" placeholder="Avg. Area Number of Bedrooms" />
+    <input type="text" class="input email-input" name="n5" placeholder="Area Population" />
+    <br>
+                {% if result %}
+                  <p class="error-message">{{ result}}</p>
+                {% endif %}
+
+      <div class="btn-row">
+            <a href="{% url 'home' %}" class="btn btn-signin"><span>Back to Homepage</span></a>
+           <button class="btn btn-register" type="submit"><span>Predict</span></button>
+      </div>
+  </form>
+
+</div>
+
+
+
+</body>
+</html>
